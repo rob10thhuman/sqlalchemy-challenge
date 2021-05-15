@@ -59,8 +59,6 @@ def tobs():
     most_active_station = session.query(measurement.station, func.count(measurement.station)).\
         group_by(measurement.station).order_by(func.count(measurement.station).desc()).first()
     
-    # last year of data (2016-08-23 to 2017-08-23)
-
     tobs_query = session.query(measurement.date, measurement.tobs).filter(measurement.date >= '2016-08-23').all()
 
     tobs_data = {date:tobs for date, tobs in tobs_query}
