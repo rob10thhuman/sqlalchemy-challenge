@@ -44,7 +44,7 @@ def station():
 
     station_query = session.query(Station.station, Station.name).all()
 
-    station_data = {station:name for station,name in station_query}
+    station_data = {station:name for station, name in station_query}
 
     session.close()
 
@@ -99,8 +99,7 @@ def startdatequery(start_date):
     return jsonify(query)
 
 @app.route(f"/api/v1.0/<start_date>/<end_date>")
-def startendquery(start_date = None, end_date = None):
-	# print(f"showing start date of {start_date} and {end_date}")
+def startendquery(start_date, end_date):
     session = Session(engine)
     start_date = dt.datetime.strptime(start_date, '%Y-%m-%d')
 
